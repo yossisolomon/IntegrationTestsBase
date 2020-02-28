@@ -1,12 +1,17 @@
-plugins {
-    id 'java'
-    id 'com.avast.gradle.docker-compose' version "0.10.9"
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.avast.gradle:gradle-docker-compose-plugin:0.10.9"
+    }
 }
 
-apply plugin: 'docker-compose'
+apply plugin: 'java'
+//apply plugin: 'docker-compose'
+apply plugin: 'idea'
 
-
-dockerCompose.isRequiredBy(test)
+//dockerCompose.isRequiredBy(test)
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -18,5 +23,17 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.0'
+    compile 'org.slf4j:slf4j-nop:1.7.25'
+
+    testImplementation 'org.awaitility:awaitility:4.0.2'
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation "com.google.truth:truth:1.0.1"
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
 }
