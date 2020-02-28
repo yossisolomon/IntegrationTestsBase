@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class Consumer {
-    private static final Logger LOGGER = Logger.getLogger(Producer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Consumer.class.getName());
 
     public static void main(String[] args) {
         Properties properties = new Properties();

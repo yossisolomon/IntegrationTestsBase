@@ -10,6 +10,7 @@ public class Producer {
     private static final Logger LOGGER = Logger.getLogger(Producer.class.getName());
 
     public static List<String> sendMessages(String topic) {
+        LOGGER.info("Sending to topic " + topic);
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
