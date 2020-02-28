@@ -8,10 +8,15 @@ buildscript {
 }
 
 apply plugin: 'java'
-//apply plugin: 'docker-compose'
 apply plugin: 'idea'
+//apply plugin: 'docker-compose'
 
 //dockerCompose.isRequiredBy(test)
+
+//dockerCompose {
+//    forceRecreate = true // pass '--force-recreate' and '--renew-anon-volumes' when calling 'docker-compose up' when set to 'true`
+//    captureContainersOutputToFiles = '/tmp/docker-compose/' // sends output of all services to a dedicated log file in the directory specified, e.g. 'web.log' for service named 'log'
+//}
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -23,13 +28,18 @@ repositories {
 }
 
 dependencies {
-    implementation('org.apache.kafka:kafka-clients:2.4.0',
-            'org.slf4j:slf4j-nop:1.7.25')
+    implementation(
+            "org.apache.kafka:kafka-clients:2.4.0",
+            "org.slf4j:slf4j-nop:1.7.25")
 
-    testImplementation('org.awaitility:awaitility:4.0.2',
+    testImplementation(
+            "org.awaitility:awaitility:4.0.2",
             "org.junit.jupiter:junit-jupiter-api:5.6.0",
-            "com.google.truth:truth:1.0.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+            "com.google.truth:truth:1.0.1",
+            "io.rest-assured:rest-assured:4.2.0")
+
+    testRuntimeOnly(
+            "org.junit.jupiter:junit-jupiter-engine:5.6.0")
 }
 
 test {

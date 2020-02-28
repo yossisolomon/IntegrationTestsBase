@@ -32,7 +32,8 @@ public class ConsumerUtils implements ExtensionContext.Store.CloseableResource {
         kafkaConsumer.commitSync();
         for (ConsumerRecord<String, String> record : records) {
             actualValue.add(record.value());
-            LOGGER.info(String.format("Topic - %s, Partition - %d, Value: %s", record.topic(), record.partition(), record.value()));
+            LOGGER.info(String.format(
+                    "Topic - %s, Partition - %d, Value: %s", record.topic(), record.partition(), record.value()));
         }
     }
 

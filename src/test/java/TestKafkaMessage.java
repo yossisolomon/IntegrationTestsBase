@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 import static com.google.common.truth.Truth.assertThat;
 import static org.awaitility.Awaitility.with;
 
-public class TestMessage {
-    private static final Logger LOGGER = Logger.getLogger(TestMessage.class.getName());
+public class TestKafkaMessage {
+    private static final Logger LOGGER = Logger.getLogger(TestKafkaMessage.class.getName());
     private static final String randomId = UUID.randomUUID().toString().substring(0, 5);
     private String topic = randomId + "_sharone";
     private ConsumerUtils consumerUtils;
 
-    public TestMessage() {
+    public TestKafkaMessage() {
     }
 
     @DisplayName("Produce message and consume")

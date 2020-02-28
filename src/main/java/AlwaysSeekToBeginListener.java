@@ -14,7 +14,6 @@ public class AlwaysSeekToBeginListener<K, V> implements ConsumerRebalanceListene
 
     @Override
     public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
-
     }
 
     @Override
