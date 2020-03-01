@@ -4,11 +4,13 @@ buildscript {
     }
     dependencies {
         classpath "com.avast.gradle:gradle-docker-compose-plugin:0.10.9"
+        classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'jsonschema2pojo'
 //apply plugin: 'docker-compose'
 
 //dockerCompose.isRequiredBy(test)
@@ -40,10 +42,19 @@ dependencies {
 
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:5.6.0")
+
+    compile(
+            "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2")
 }
 
 test {
     useJUnitPlatform()
     testLogging.showStandardStreams = true
     testLogging.exceptionFormat = 'full'
+}
+
+jsonSchema2Pojo {
+    targetPackage = 'org.example.json.schema'
+    generateBuilders = true
+    propertyWordDelimiters = ['_'] as char[]
 }

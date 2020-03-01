@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "definitions": {
+    "position": {
+      "type": "object",
+      "properties": {
+        "longitude": { "type": "number" },
+        "latitude":  { "type": "number" },
+        "altitude":  { "type": "number", "default": 0 }
+      }
+    },
+    "category" : {
+      "type" : "string",
+      "enum" : ["HELICOPTER, UNKNOWN"]
+    }
+  },
+
+  "type": "object",
+
+  "properties": {
+    "position": { "$ref": "#/definitions/position" },
+    "category": { "$ref": "#/definitions/category" }
+  }
+}
