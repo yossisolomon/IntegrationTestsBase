@@ -32,7 +32,8 @@ repositories {
 dependencies {
     implementation(
             "org.apache.kafka:kafka-clients:2.4.0",
-            "org.slf4j:slf4j-nop:1.7.25")
+            "org.slf4j:slf4j-nop:1.7.25",
+            "org.seleniumhq.selenium:selenium-java:3.141.59")
 
     testImplementation(
             "org.awaitility:awaitility:4.0.2",
@@ -47,7 +48,7 @@ dependencies {
             "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2")
 }
 
-task dockerCompose{
+task dockerCompose {
     exec {
         workingDir '.'
         commandLine 'sh', '-c', 'docker-compose down -v && docker-compose up > /tmp/docker-compose &'
