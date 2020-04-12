@@ -17,7 +17,7 @@ public class ConsumerUtils implements ExtensionContext.Store.CloseableResource {
 
     public ConsumerUtils(String topic) {
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
+        properties.put("bootstrap.servers", Consumer.getKafkaAddress());
         properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         properties.put("group.id", "random_group_" + randomId);

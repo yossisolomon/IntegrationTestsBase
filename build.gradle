@@ -3,14 +3,14 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.avast.gradle:gradle-docker-compose-plugin:0.10.9"
-        classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2"
+//        classpath "com.avast.gradle:gradle-docker-compose-plugin:0.10.9"
+//        classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'jsonschema2pojo'
+//apply plugin: 'jsonschema2pojo'
 //apply plugin: 'docker-compose'
 
 //dockerCompose.isRequiredBy(test)
@@ -51,7 +51,7 @@ dependencies {
 task dockerCompose {
     exec {
         workingDir '.'
-        commandLine 'sh', '-c', 'docker-compose down -v && docker-compose up > /tmp/docker-compose &'
+        commandLine 'sh', '-c', 'docker-compose down -v && docker-compose up -d > /tmp/docker-compose'
     }
 }
 
@@ -61,8 +61,10 @@ test {
     testLogging.exceptionFormat = 'full'
 }
 
-jsonSchema2Pojo {
-    targetPackage = 'org.example.json.schema'
-    generateBuilders = true
-    propertyWordDelimiters = ['_'] as char[]
-}
+//test.dependsOn(dockerCompose)
+
+//jsonSchema2Pojo {
+//    targetPackage = 'org.example.json.schema'
+//    generateBuilders = true
+//    propertyWordDelimiters = ['_'] as char[]
+//}

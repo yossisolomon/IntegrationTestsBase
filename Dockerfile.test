@@ -1,0 +1,7 @@
+FROM gradle:6.2.0-jdk8
+
+ADD . /app
+
+WORKDIR /app
+
+CMD gradle clean test

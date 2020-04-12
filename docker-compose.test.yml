@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  integ:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    links:
+      - kafka
+    environment:
+      - KAFKA_ADDRESS=kafka:29092
+    depends_on:
+      - zookeeper
+      - kafka

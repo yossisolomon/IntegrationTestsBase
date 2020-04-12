@@ -13,7 +13,7 @@ public class Producer {
         LOGGER.info("Sending to topic " + topic);
 
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
+        properties.put("bootstrap.servers", Consumer.getKafkaAddress());
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
